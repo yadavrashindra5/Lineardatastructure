@@ -75,6 +75,31 @@ public class SinglyLinkedList {
 
     }
 
+    public static Node deleteFirst(Node start)
+    {
+        if(start==null)
+        {
+            System.out.println("no data is available");
+            return start;
+        }
+        start=start.next;
+        return start;
+    }
+
+    public static Node deleteLast(Node start)
+    {
+        if(start==null)
+        {
+            System.out.println("no such data");
+            return start;
+        }
+        if(start.next==null)
+        {
+            return null;
+        }
+        start.next=deleteLast(start.next);
+        return start;
+    }
 
     public static void display(Node start)
     {
@@ -100,6 +125,9 @@ public class SinglyLinkedList {
         start=addAfter(start,90,67);
         start=addBefore(start,67,5);
         start=addBefore(start,89,6);
+        display(start);
+        System.out.println();
+
         display(start);
     }
 
