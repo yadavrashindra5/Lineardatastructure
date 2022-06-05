@@ -48,6 +48,33 @@ public class SinglyLinkedList {
 
     }
 
+    public static Node addBefore(Node start,int before,int val)
+    {
+        Node newnode=new Node(val,null);
+        if(start.data==before)
+        {
+            newnode.next=start;
+            start=newnode;
+            return start;
+        }
+
+        Node ptr=start,previous=null;
+        while(ptr.data!=before)
+        {
+            previous=ptr;
+            ptr=ptr.next;
+        }
+        if(ptr==null)
+        {
+            System.out.println("no such data");
+            return start;
+        }
+        newnode.next=ptr;
+        previous.next=newnode;
+        return start;
+
+    }
+
 
     public static void display(Node start)
     {
@@ -71,6 +98,8 @@ public class SinglyLinkedList {
         System.out.println(start.next.next.data);
         start=addAfter(start,89,78);
         start=addAfter(start,90,67);
+        start=addBefore(start,67,5);
+        start=addBefore(start,89,6);
         display(start);
     }
 
