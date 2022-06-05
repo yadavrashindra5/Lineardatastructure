@@ -28,6 +28,27 @@ public class SinglyLinkedList {
         ptr.next=newnode;
         return start;
     }
+
+    public static Node addAfter(Node start,int after,int val)
+    {
+        Node ptr=start;
+        while(ptr!=null&&ptr.data!=after)
+        {
+            ptr=ptr.next;
+        }
+        if(ptr==null)
+        {
+            System.out.println("no such data");
+            return start;
+        }
+        Node newnode=new Node(val,null);
+        newnode.next=ptr.next;
+        ptr.next=newnode;
+        return start;
+
+    }
+
+
     public static void display(Node start)
     {
         Node ptr=start;
@@ -38,6 +59,7 @@ public class SinglyLinkedList {
         }
     }
 
+
     public static void main(String args[])
     {
         Node start=null;
@@ -47,6 +69,8 @@ public class SinglyLinkedList {
         System.out.println(start.data);
         start=addLast(start,90);
         System.out.println(start.next.next.data);
+        start=addAfter(start,89,78);
+        start=addAfter(start,90,67);
         display(start);
     }
 
